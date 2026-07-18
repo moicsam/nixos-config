@@ -8,7 +8,7 @@
     ./apps/alacritty.nix
     ./apps/zsh.nix
     ./apps/git.nix
-    inputs.nixvim.homeModules.nixvim
+    ./apps/catppuccin.nix
     inputs.catppuccin.homeModules.catppuccin
   ];
 
