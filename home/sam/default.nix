@@ -9,6 +9,7 @@
     ./apps/zsh.nix
     ./apps/git.nix
     ./apps/catppuccin.nix
+    ./desktop/default.nix
     inputs.catppuccin.homeModules.catppuccin
   ];
 

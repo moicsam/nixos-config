@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # agenix et vibe n'ont pas de branche unstable, donc on les laisse sur leur version par défaut
     agenix = {
       url = "github:ryantm/agenix";
@@ -33,12 +38,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, agenix, niri, ... }@inputs: {
     nixosConfigurations.denis = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hosts/denis/default.nix
         agenix.nixosModules.default
+        niri.nixosModules.niri
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
