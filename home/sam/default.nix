@@ -9,17 +9,12 @@
     ./apps/zsh.nix
     ./apps/git.nix
     ./apps/catppuccin.nix
+    ./apps/zed-editor.nix
+    ./apps/fuzzel.nix
+    ./apps/wlogout.nix
     ./desktop/default.nix
+    ./packages.nix
     inputs.catppuccin.homeModules.catppuccin
-  ];
-
-  home.packages = with pkgs; [
-    keepassxc
-    tidal-hifi
-    zed-editor
-    logseq
-    signal-desktop
-    inputs.vibe.packages.${system}.default
   ];
 
   services.syncthing.enable = true;

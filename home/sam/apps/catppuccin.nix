@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   catppuccin = {
     autoEnable = true;
@@ -8,8 +8,11 @@
   };
 
   gtk = {
-    enable = true;  # <-- essentiel, sans ça catppuccin.gtk ne fait rien
-    iconTheme.name = "Papirus-Dark"; # géré par catppuccin si icon.enable
+    enable = true;
+    # iconTheme = {
+    #   name = "Papirus-Dark";
+    #   package = pkgs.papirus-icon-theme;
+    # };
     gtk4.theme = null;
     theme = {
       name = "catppuccin-mocha-mauve-standard";
@@ -20,6 +23,14 @@
       };
     };
   };
+
+  # Puis, pour recolorer les dossiers de Papirus en Catppuccin :
+  home.packages = [
+    (pkgs.catppuccin-papirus-folders.override {
+      flavor = "mocha";
+      accent = "mauve";
+    })
+  ];
 
   # pour que Qt suive le même thème (sinon apps Qt restent blanches)
   qt = {
@@ -34,7 +45,5 @@
     package = pkgs.catppuccin-cursors.mochaMauve;
     name = "catppuccin-mocha-mauve-cursors";
     size = 24;
-    # gtk.enable = true;
-    # x11.enable = true;
   };
 }

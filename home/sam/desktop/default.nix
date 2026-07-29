@@ -7,6 +7,5 @@
     ./wallpaper.nix
     ./waybar/waybar.nix
     ./swaync.nix
-    ./fuzzel.nix
   ];
 }

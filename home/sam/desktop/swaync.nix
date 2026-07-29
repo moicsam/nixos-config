@@ -1,7 +1,6 @@
 { ... }: {
   # -------------------
-  # Control center : swaync remplace mako
-  # (donne un vrai panneau avec MPRIS/musique + notifications + boutons rapides)
+  # Control center : swaync
   # -------------------
   services.swaync = {
     enable = true;

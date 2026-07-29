@@ -14,13 +14,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    networkmanagerapplet   # nm-connection-editor
     blueman
-    pavucontrol
-    playerctl
-    wlogout        # panneau logout/power off/lanceur (clic sur le logo Nix)
-    brightnessctl  # nécessaire pour le module "backlight" (luminosité)
-    fuzzel
   ];
 
   services.power-profiles-daemon.enable = true;
