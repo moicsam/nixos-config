@@ -30,6 +30,7 @@ window#waybar {
 #memory,
 #network,
 #bluetooth,
+#backlight,
 #battery,
 #custom-power-profile,
 #custom-control-center,

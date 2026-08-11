@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   # -------------------
@@ -19,7 +19,6 @@
       modules-right = [
         "custom/power-profile"
         "network"
-        "tray"
         "bluetooth"
         "backlight"
         "battery"
