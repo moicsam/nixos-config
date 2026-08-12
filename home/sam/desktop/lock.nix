@@ -1,7 +1,13 @@
 { pkgs, ... }:
 let
+  lockGuard = pkgs.writeShellScript "lock-guard" ''
+    if ${pkgs.procps}/bin/pgrep -x swaylock > /dev/null; then
+      exit 0
+    fi
+    exec ${pkgs.swaylock}/bin/swaylock -f
+  '';
+
   lockScript = pkgs.writeShellScript "lock-then-dim" ''
-    # Empêche les instances multiples de swaylock de s'empiler
     if ${pkgs.procps}/bin/pgrep -x swaylock > /dev/null; then
       exit 0
     fi
@@ -25,7 +31,6 @@ in
 
   services.swayidle =
     let
-      lock = "${pkgs.swaylock}/bin/swaylock -f";
       display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
     in
     {
@@ -38,7 +43,7 @@ in
         }
       ];
       events = {
-        before-sleep = lock;
+        before-sleep = "${lockGuard}";
         lock = "${lockScript}";
         after-resume = display "on";
       };
