@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./package.nix
@@ -7,5 +7,6 @@
     ./wallpaper.nix
     ./waybar/waybar.nix
     ./swaync.nix
+    ./swayosd.nix
   ];
 }

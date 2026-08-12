@@ -23,6 +23,7 @@
     duc
     libreoffice-qt
     zettlr
+    nemo
 
     # Outils CTF
     wireguard-tools

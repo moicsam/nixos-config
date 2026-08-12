@@ -10,7 +10,9 @@
   # Nécessaire pour que niri/wayland trouvent bien les portails
   xdg.portal = {
     enable = true;
-    config.common.default = "gnome";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
+    config.common.default = [ "gtk" ];
   };
 
   environment.systemPackages = with pkgs; [
