@@ -29,7 +29,7 @@
       "Mod+D".action.spawn = "fuzzel";
       "Mod+Q".action.close-window = {};
       "Mod+Ctrl+E".action.quit = {};
-      "Mod+Ctrl+L".action.spawn = "swaylock -f";
+      "Mod+Ctrl+L".action.spawn = [ "loginctl" "lock-session" ];
 
       ############################################
       # Focus — navigation vim hjkl
@@ -134,7 +134,7 @@
       ############################################
       # Verrouillage écran (nécessite swaylock ou équivalent)
       ############################################
-      "Mod+Escape".action.spawn = "swaylock";
+      "Mod+Escape".action.spawn = [ "loginctl" "lock-session" ];
 
       "Mod+Tab".action.toggle-overview = {};
       "Mod+Shift+Comma".action.show-hotkey-overlay = {};  # Mod+? en pratique (le ? est sur Shift+')
