@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   catppuccin = {
     autoEnable = true;
@@ -13,7 +13,14 @@
     #   name = "Papirus-Dark";
     #   package = pkgs.papirus-icon-theme;
     # };
-    gtk4.theme = null;
+    gtk4.theme = {
+      name = "catppuccin-mocha-mauve-standard";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "mauve" ];
+        size = "standard";
+        variant = "mocha";
+      };
+    };
     theme = {
       name = "catppuccin-mocha-mauve-standard";
       package = pkgs.catppuccin-gtk.override {
