@@ -39,7 +39,7 @@
       "Mod+T".action.focus-window-down = {};
       "Mod+S".action.focus-window-up = {};
 
-      # Flèches en alias (pour les moments où tu penses pas vim)
+      # Flèches en alias
       "Mod+Left".action.focus-column-left = {};
       "Mod+Right".action.focus-column-right = {};
       "Mod+Down".action.focus-window-down = {};
@@ -49,6 +49,10 @@
       "Mod+Home".action.focus-column-first = {};
       "Mod+End".action.focus-column-last = {};
 
+      # Changer d'écran
+      "Mod+Shift+C".action.focus-monitor-left = {};
+      "Mod+Shift+R".action.focus-monitor-right = {};
+
       ############################################
       # Déplacer la fenêtre focus — Ctrl+hjkl
       ############################################
@@ -57,9 +61,9 @@
       "Mod+Ctrl+T".action.move-window-down = {};
       "Mod+Ctrl+S".action.move-window-up = {};
 
-      # Vers un autre moniteur
-      "Mod+Ctrl+Shift+H".action.move-column-to-monitor-left = {};
-      "Mod+Ctrl+Shift+L".action.move-column-to-monitor-right = {};
+      # Vers un autre moniteur (déplace la fenêtre)
+      "Mod+Ctrl+Shift+C".action.move-column-to-monitor-left = {};
+      "Mod+Ctrl+Shift+R".action.move-column-to-monitor-right = {};
 
       ############################################
       # Resize — Alt+hjkl (évite le petit doigt sur Shift)
@@ -87,6 +91,13 @@
       "Mod+Ctrl+Page_Down".action.move-column-to-workspace-down = {};
       "Mod+Ctrl+Page_Up".action.move-column-to-workspace-up = {};
 
+      # Alias avec T/S (bépo) pour switcher de workspace sans passer par waybar
+      # (Mod+Alt+T/S est déjà pris par le resize, on utilise Mod+Shift ici)
+      "Mod+Shift+T".action.focus-workspace-down = {};
+      "Mod+Shift+S".action.focus-workspace-up = {};
+      "Mod+Ctrl+Shift+T".action.move-column-to-workspace-down = {};
+      "Mod+Ctrl+Shift+S".action.move-column-to-workspace-up = {};
+
       # Accès direct workspace 1-9 (comme sur i3/sway)
       "Mod+1".action.focus-workspace = 1;
       "Mod+2".action.focus-workspace = 2;
@@ -113,9 +124,9 @@
       ############################################
       # Volume / luminosité (nécessite pactl / brightnessctl installés)
       ############################################
-      "XF86AudioRaiseVolume".action.spawn = [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%" ];
-      "XF86AudioLowerVolume".action.spawn = [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%" ];
-      "XF86AudioMute".action.spawn = [ "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle" ];
+      "XF86AudioRaiseVolume".action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+" ];
+      "XF86AudioLowerVolume".action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-" ];
+      "XF86AudioMute".action.spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
       "XF86MonBrightnessUp".action.spawn = [ "brightnessctl" "set" "+5%" ];
       "XF86MonBrightnessDown".action.spawn = [ "brightnessctl" "set" "5%-" ];
 
