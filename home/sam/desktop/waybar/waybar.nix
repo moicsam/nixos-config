@@ -18,8 +18,7 @@
       modules-center = [ "niri/workspaces" ];
       modules-right = [
         "custom/power-profile"
-        "network"
-        "bluetooth"
+        "tray"
         "backlight"
         "battery"
         "custom/control-center"
@@ -72,22 +71,8 @@
         signal = 8; # permet un refresh instantané au clic, voir note plus bas
       };
 
-      network = {
-        format-wifi = "{icon} {signalStrength}%";
-        format-ethernet = " {ipaddr}";
-        format-disconnected = "󰤭";
-        format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
-        tooltip-format-wifi = "{essid} - {ifname} via {gwaddr}";
-        tooltip-format-ethernet = "{ifname} via {gwaddr}";
-        on-click = "nm-connection-editor";
-      };
-
-      bluetooth = {
-        format = " {status}";
-        format-connected = " {device_alias}";
-        format-connected-battery = " {device_alias} ({device_battery_percentage}%)";
-        tooltip-format = "{controller_alias}\t{controller_address}";
-        on-click = "blueman-manager";
+      tray = {
+        spacing = 8;
       };
 
       # Luminosité
@@ -113,10 +98,6 @@
         format = "";
         tooltip-format = "Ouvrir le centre de contrôle";
         on-click = "swaync-client -t -sw";
-      };
-
-      tray = {
-        spacing = 8;
       };
 
       clock = {

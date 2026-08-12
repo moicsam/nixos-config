@@ -10,5 +10,6 @@
     networkmanagerapplet
     brightnessctl
     playerctl
+    nwg-displays
   ];
 }

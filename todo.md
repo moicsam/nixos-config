@@ -21,6 +21,18 @@
     };
     ```
     > dans KeePassXC, l'option Secret Service s'appelle "Enable KeePassXC Secret Service integration" dans les paramètres de l'appli (pas dans Nix) — elle doit être cochée manuellement dans l'UI la première fois, ce n'est pas déclarable en pure config Nix.
+    `keepassxc-cli --agent` permet de garder la db ouverte en stockant le mot de passe dans la ram de manière sécurisé par l'agent keepass.
+    ```nix
+    systemd.user.services.keepassxc-agent = {
+        description = "KeepassXC Agent";
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          ExecStart = "${pkgs.keepassxc-cli}/bin/keepassxc-cli --agent";
+          Restart = "on-failure";
+        };
+      };
+    ```
+
 - [ ] secure boot
   - [ ] lanzaboot  
     Étape 2 — Ajouter l'input lanzaboote au flake
@@ -94,12 +106,20 @@
       
       Redémarre, réactive Secure Boot dans le BIOS, et vérifie que ça boot bien des deux côtés (NixOS et Windows).
 
+## Modification pour la bare
+- [x] bluetooth pas beau (double logot et logo pas beau)
+
 ## Truc important pas test
 
-- [ ] dual monitor
-- [ ] wifi / bluethoot
-- [ ] swaync
+- [x] dual monitor
+  - [x] switch de l'un a l'autre
+  - [ ] config quel écrant est qui et leur ordre
+- [x] wifi / bluethoot
+- [x] swaync
+- [x] augmentre / diminuer le song avec les touches
+- [x] déplacement pas top (pas de déplacement sur les autres page )
 
 ## Bug a fix important
 
-- [ ] Lock fonctionne pas depuis wlogout
+- [x] Lock fonctionne pas depuis wlogout
+- [x] song fonctionne mais j'ai pas de rétroaction
