@@ -22,7 +22,7 @@
     };
 
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake"; ## other fork up to date go back to sodiboo/niri-flake when back to date
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
