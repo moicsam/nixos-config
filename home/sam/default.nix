@@ -12,6 +12,7 @@
     ./apps/zed-editor.nix
     ./apps/fuzzel.nix
     ./apps/wlogout.nix
+    ./apps/udisk.nix
     ./desktop/default.nix
     ./packages.nix
     inputs.catppuccin.homeModules.catppuccin

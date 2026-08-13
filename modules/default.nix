@@ -10,6 +10,7 @@
     ./services/pipewire.nix
     ./services/printing.nix
     # ./services/desktop_environment.nix
+    ./services/udisks.nix
     ./services/ssh.nix
     ./services/virtmanager.nix
     ./services/nix-ld.nix
