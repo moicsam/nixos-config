@@ -1,4 +1,4 @@
-{ ... }:
+{ config, lib, ... }:
 {
   # -------------------
   # Config niri
@@ -18,8 +18,6 @@
         dwt = true;                    # disable-while-typing
       };
     };
-
-    outputs."eDP-1".scale = 1.0; # adapte le nom de sortie et l'échelle
 
     binds = {
       ############################################
@@ -182,4 +180,19 @@
       };
     };
   };
+
+  # -------------------
+  # On empêche Home Manager de gérer config.kdl (ça créerait un symlink RO).
+  # On génère plutôt config-base.kdl à partir de programs.niri.settings.
+  # -------------------
+  xdg.configFile."niri/config.kdl".enable = false;
+  xdg.configFile."niri/config-base.kdl".text = config.programs.niri.finalConfig;
+
+  home.activation.niriConfigInclude = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      mkdir -p "${config.xdg.configHome}/niri"
+      if [ ! -e "${config.xdg.configHome}/niri/config.kdl" ] || [ -L "${config.xdg.configHome}/niri/config.kdl" ]; then
+        rm -f "${config.xdg.configHome}/niri/config.kdl"
+        echo 'include "config-base.kdl"' > "${config.xdg.configHome}/niri/config.kdl"
+      fi
+    '';
 }
