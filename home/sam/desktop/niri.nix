@@ -181,14 +181,12 @@
     };
   };
 
-  # -------------------
-  # On empêche Home Manager de gérer config.kdl (ça créerait un symlink RO).
-  # On génère plutôt config-base.kdl à partir de programs.niri.settings.
-  # -------------------
-  xdg.configFile."niri/config.kdl".enable = false;
-  xdg.configFile."niri/config-base.kdl".text = config.programs.niri.finalConfig;
+  # On laisse niri-flake désactivé sur config.kdl lui-même,
+    # mais on récupère son contenu généré pour l'écrire ailleurs.
+    xdg.configFile.niri-config.enable = lib.mkForce false;
+    xdg.configFile."niri/config-base.kdl".text = config.programs.niri.finalConfig;
 
-  home.activation.niriConfigInclude = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    home.activation.niriConfigInclude = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       mkdir -p "${config.xdg.configHome}/niri"
       if [ ! -e "${config.xdg.configHome}/niri/config.kdl" ] || [ -L "${config.xdg.configHome}/niri/config.kdl" ]; then
         rm -f "${config.xdg.configHome}/niri/config.kdl"
