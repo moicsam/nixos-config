@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ inputs, ... }:
 
 {
   home.username = "sam";
@@ -13,6 +13,7 @@
     ./apps/fuzzel.nix
     ./apps/wlogout.nix
     ./apps/udisk.nix
+    ./apps/keepassxc.nix
     ./desktop/default.nix
     ./packages.nix
     inputs.catppuccin.homeModules.catppuccin
