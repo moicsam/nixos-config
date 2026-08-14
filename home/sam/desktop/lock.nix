@@ -1,9 +1,19 @@
 { pkgs, ... }:
 {
-  programs.swaylock.enable = true;
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+      clock = true;
+      datestr = "%Y-%m-%d";
+      timestr = "%H:%M:%S";
+      font-size = 28;
+    };
+  };
+
   services.swayidle =
   let
-    lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+    lock = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
     display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
   in
   {
@@ -23,10 +33,10 @@
            command = display "off";
            resumeCommand = display "on";
          }
-         {
-           timeout = 315;
-           command = "${pkgs.systemd}/bin/systemctl suspend";
-         }
+         # {
+         #   timeout = 315;
+         #   command = "${pkgs.systemd}/bin/systemctl suspend";
+         # }
     ];
     events = {
       before-sleep = "${lock}; ${display "off"}";
