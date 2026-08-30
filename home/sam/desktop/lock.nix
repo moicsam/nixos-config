@@ -5,9 +5,12 @@
     package = pkgs.swaylock-effects;
     settings = {
       clock = true;
-      datestr = "%Y-%m-%d";
+      datestr = "%d-%m-%Y";
       timestr = "%H:%M:%S";
       font-size = 28;
+      indicator-radius = 100;
+      screenshots = true;
+      effect-blur = "7x5";
     };
   };
 
@@ -33,10 +36,10 @@
            command = display "off";
            resumeCommand = display "on";
          }
-         # {
-         #   timeout = 315;
-         #   command = "${pkgs.systemd}/bin/systemctl suspend";
-         # }
+         {
+           timeout = 315;
+           command = "${pkgs.systemd}/bin/systemctl suspend";
+         }
     ];
     events = {
       before-sleep = "${lock}; ${display "off"}";
