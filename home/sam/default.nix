@@ -13,6 +13,7 @@
     ./apps/fuzzel.nix
     ./apps/wlogout.nix
     ./apps/udisk.nix
+    ./apps/direnv.nix
     ./apps/keepassxc.nix
     ./desktop/default.nix
     ./packages.nix
