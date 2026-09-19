@@ -5,5 +5,7 @@
     logseq
     signal-desktop
     inputs.vibe.packages.${system}.default
+    ghidra
+    xwayland-satellite
   ];
 }
