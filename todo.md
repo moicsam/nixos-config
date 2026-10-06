@@ -1,38 +1,6 @@
 ## Truc qui manque 
 [liens de niri nix](https://wiki.nixos.org/wiki/Niri)
 
-- [ ] secret service
-  - [ ] keepassxc
-    ```nix
-    # home.nix ou configuration.nix selon où tu gères programs.keepassxc
-    programs.keepassxc = {
-      enable = true;
-      # ...
-    };
-    ```
-    ```nix
-    systemd.user.services.keepassxc = {
-      Unit.Description = "KeePassXC";
-      Install.WantedBy = [ "graphical-session.target" ];
-      Service = {
-        ExecStart = "${pkgs.keepassxc}/bin/keepassxc";
-        Restart = "on-failure";
-      };
-    };
-    ```
-    > dans KeePassXC, l'option Secret Service s'appelle "Enable KeePassXC Secret Service integration" dans les paramètres de l'appli (pas dans Nix) — elle doit être cochée manuellement dans l'UI la première fois, ce n'est pas déclarable en pure config Nix.
-    `keepassxc-cli --agent` permet de garder la db ouverte en stockant le mot de passe dans la ram de manière sécurisé par l'agent keepass.
-    ```nix
-    systemd.user.services.keepassxc-agent = {
-        description = "KeepassXC Agent";
-        wantedBy = [ "default.target" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.keepassxc-cli}/bin/keepassxc-cli --agent";
-          Restart = "on-failure";
-        };
-      };
-    ```
-
 - [ ] secure boot
   - [ ] lanzaboot  
     Étape 2 — Ajouter l'input lanzaboote au flake
@@ -113,7 +81,7 @@
 
 - [x] dual monitor
   - [x] switch de l'un a l'autre
-  - [ ] config quel écrant est qui et leur ordre
+  - [x] config quel écrant est qui et leur ordre
 - [x] wifi / bluethoot
 - [x] swaync
 - [x] augmentre / diminuer le song avec les touches
@@ -123,3 +91,4 @@
 
 - [x] Lock fonctionne pas depuis wlogout
 - [x] song fonctionne mais j'ai pas de rétroaction
+- [x] nwg-display fonctionne pas car le fichier niri/config.kdl est own par le store et que je suis pas capable d'ajouter la ligne include "monitor.kdl"
