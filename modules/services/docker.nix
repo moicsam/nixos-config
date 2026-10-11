@@ -1,5 +1,7 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  virtualisation.docker.enable = true;
+  flake.modules.nixos.docker = {
+    virtualisation.docker.enable = true;
+  };
 }

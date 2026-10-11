@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  flake.modules.nixos.printing = {
+    services.printing.enable = true;
+  };
 }
