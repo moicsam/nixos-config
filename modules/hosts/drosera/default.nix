@@ -11,18 +11,18 @@
       desktop
       zsh
       docker
-      ssh
+      ssh-agent
       printing
       udisks
       virtmanager
       nix-ld
       networking
       packages
+      tailscale
     ] ++ [ ./_hardware.nix ];
 
     networking.hostName = "drosera";
     boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
     virtualisation.vmVariant = {
