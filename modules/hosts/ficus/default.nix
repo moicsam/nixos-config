@@ -10,6 +10,8 @@
       base
       ssh
       tailscale
+      radicale
+      packages
     ] ++ [ ./_hardware.nix ];
 
     networking.hostName = "ficus";
