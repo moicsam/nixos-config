@@ -15,6 +15,7 @@
       playerctl
       nwg-displays
       xwayland-satellite
+      nemo
     ];
   };
 }
