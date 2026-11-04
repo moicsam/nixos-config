@@ -48,6 +48,7 @@
       zed-editor
       udisks
       keepassxc
+      syncthing
     ];
   };
 
