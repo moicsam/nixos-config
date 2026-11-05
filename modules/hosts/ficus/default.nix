@@ -12,6 +12,7 @@
       tailscale
       radicale
       packages
+      backup
     ] ++ [ ./_hardware.nix ];
 
     networking.hostName = "ficus";
