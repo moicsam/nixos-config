@@ -49,6 +49,7 @@
       udisks
       keepassxc
       syncthing
+      neovim
     ];
   };
 

@@ -22,13 +22,14 @@
     system.stateVersion = lib.mkDefault "26.05";
 
     users.users.sam.openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKecXdnYEQpF5MhIoYYE8odgdNINQMvpcwVpOxga3+Fr sam@drosera"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHjHguoSb77hDl7ux/KH+nOMl1N6wd+Cah09GpeIy8C0 sam@drosera"
     ];
 
 
     home-manager.users.sam.imports = with config.flake.modules.homeManager; [
       ficus
       git
+      neovim
     ];
   };
 
